@@ -65,5 +65,5 @@ function load(option) {
 }
 
 get_genius_api();
-get_yt_api();
+// get_yt_api();
 console.log(JSON.parse(localStorage.getItem("songs")))

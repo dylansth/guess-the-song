@@ -8,13 +8,56 @@
 
 // Create user selections
 
-var lyrics = [1, 2, 3, 4, 5, 6, 7];
+var questionHeading = document.getElementById("questionHeading");
+var answerA = document.getElementById("answerA");
+var answerB = document.getElementById("answerB");
+var answerC = document.getElementById("answerC");
+var answerD = document.getElementById("answerD");
 
-function randomLyrics(randomArray) {
-    var randomIndex = Math.floor(Math.random() * lyrics.length);
-    return randomArray[randomIndex];
+var songArray = load("song");
+
+// Randomly selects users choices
+function randomchoiceA(songArray) {
+    var rng = Math.floor(Math.random() * songArray.length);
+    return songArray[rng];
 }
 
-var object = randomLyrics(lyrics);
-console.log(object);
+function randomchoiceB(songArray) {
+    var rng = Math.floor(Math.random() * songArray.length);
+    return songArray[rng];
+}
+
+function randomchoiceC(songArray) {
+    var rng = Math.floor(Math.random() * songArray.length);
+    return songArray[rng];
+}
+
+function randomchoiceD(songArray) {
+    var rng = Math.floor(Math.random() * songArray.length);
+    return songArray[rng];
+}
+
+//Turn random choices into variables, and log.
+var choiceA = randomchoiceA(songArray);
+console.log(choiceA);
+
+var choiceB = randomchoiceB(songArray);
+console.log(choiceB);
+
+var choiceC = randomchoiceC(songArray);
+console.log(choiceC);
+
+var choiceD = randomchoiceD(songArray);
+console.log(choiceD);
+
+//Append variables to HTML buttons
+function userQuestions() {
+    answerA.textContent = choiceA;
+    answerB.textContent = choiceB;
+    answerC.textContent = choiceC;
+    answerD.textContent = choiceD;
+}
+
+userQuestions();
+
 
