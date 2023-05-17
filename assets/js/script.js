@@ -28,6 +28,7 @@ function get_genius_api() {
     var genius_full_api = genius_api + genius_artist + genius_token;
     var song_bank = [];
     fetch(genius_full_api)
+
     .then(function (response) {
         return response.json();
     })
