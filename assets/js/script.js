@@ -17,17 +17,19 @@ function get_genius_api() {
     var genius_full_api = genius_api + genius_artist + genius_token;
     var song_bank = [];
     fetch(genius_full_api)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log("Songs: ")
-        for (var i = 0; i < data.response.hits.length; i ++) {
-            song_bank.push(data.response.hits[i].result.title);
-        }
-    });
-    localStorage.setItem("song_bank", JSON.stringify(song_bank));
-    return;
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            for (var i = 0; i < data.response.hits.length; i++) {
+                song_bank.push(data.response.hits[i].result.title);
+            }
+            localStorage.setItem("song_bank", JSON.stringify(song_bank));
+        });
+    console.log(song_bank)
+    // localStorage.setItem("song_bank", JSON.stringify(song_bank));
+
 }
 get_genius_api();
 get_yt_api();
+
