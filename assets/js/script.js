@@ -1,29 +1,38 @@
-function yt_video() {
 
+
+
+// Generate website
+function get_youtube_video() {
+    var youtube = "https://www.youtube.com/watch?v=";
+    var id = load("video_id");
+    var youtube_url = youtube + id;
+    return youtube_url;
+    
 }
 
 // To get the specific video id using yt api
-function get_yt_api() {
-    var yt_api = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
+function get_youtube_api() {
+    var youtube_api = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
     var search = JSON.parse(localStorage.getItem("songs"))[3] + " Instrumental";
     search = search.replaceAll(" ", "%20")
-    var yt_token = "&key=AIzaSyA2ldRFpHlI-TC8goSG6rVQFJBWQzVLyzM";
-    var yt_full_api = yt_api + search + yt_token;
-    console.log(yt_full_api);
-    fetch(yt_full_api)
+    var youtube_token = "&key=AIzaSyDnRjNh8SNxSrHF4kpEZUEhjfPL0CBL_f0";
+    var youtube_full_api = youtube_api + search + youtube_token;
+    fetch(youtube_full_api)
     .then(function (response) {
         return response.json();
     })
     .then(function (data) {
-        console.log(data.items[0].id.videoId);
+        save("video_id", data.items[0].id.videoId);
     });
+    return;
+    
 }
 
 
 // Get API from genius api 
 function get_genius_api() {
     var genius_api = "https://api.genius.com/search?q=";
-    var genius_artist = "ladygaga";
+    var genius_artist = "alanwalker";
     var genius_token = "&access_token=wAfiQh7brLmlaaRzG7qxg6hUPKkOlajQPF1WWJy3-x8UEgTvBELbqtjag3mtB61G";
     var genius_full_api = genius_api + genius_artist + genius_token;
     var song_bank = [];
@@ -49,6 +58,8 @@ function save(option, data) {
         localStorage.setItem("user", data);
     } else if (option === "score") {
         localStorage.setItem("score", data);
+    } else if (option === "video_id") {
+        localStorage.setItem("video_id", data);
     }
     return;
 } 
@@ -61,9 +72,11 @@ function load(option) {
         return localStorage.getItem("user");
     } else if (option === "score") {
         return localStorage.getItem("score");
+    } else if (option === "video_id") {
+        return localStorage.getItem("video_id");
     }
 }
 
+get_youtube_api();
 get_genius_api();
-get_yt_api();
-console.log(JSON.parse(localStorage.getItem("songs")))
+
