@@ -6,7 +6,7 @@ function get_yt_api() {
     var search = "instrumental";
     var yt_token = "AIzaSyA2ldRFpHlI-TC8goSG6rVQFJBWQzVLyzM";
     var yt_full_api = yt_api + search + yt_token;
-    var search = "";
+    var song = localStorage.getItem()
 }
 
 
@@ -27,8 +27,19 @@ function get_genius_api() {
             song_bank.push(data.response.hits[i].result.title);
         }
     });
-    localStorage.setItem("song_bank", JSON.stringify(song_bank));
+    save("song", song_bank);
     return;
 }
+
+// Save optioin for local storage
+function save(option, data) {
+    if (option === "song") {
+        localStorage.setItem("song_bank", JSON.stringify(data));
+    } else if (option === "user") {
+        localStorage.setItem("user", data);
+    } else if (option === "score") {
+        localStorage.setItem("score", data);
+    }
+} 
 get_genius_api();
 get_yt_api();
