@@ -31,3 +31,4 @@ function get_genius_api() {
 }
 get_genius_api();
 get_yt_api();
+console.log(JSON.parse(localStorage.getItem("songs")))
