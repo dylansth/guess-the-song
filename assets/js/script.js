@@ -1,4 +1,5 @@
-
+var frame = document.getElementById("video");
+frame.setAttribute("src", get_youtube_video());
 
 
 // Generate website
@@ -7,15 +8,15 @@ function get_youtube_video() {
     var id = load("video_id");
     var youtube_url = youtube + id;
     return youtube_url;
-    
 }
 
 // To get the specific video id using yt api
-function get_youtube_api() {
+function get_youtube_api(song_index = 1) {
     var youtube_api = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
-    var search = JSON.parse(localStorage.getItem("songs"))[3] + " Instrumental";
+    // Change this songs[#] 
+    var search = JSON.parse(localStorage.getItem("songs"))[song_index] + " Instrumental";
     search = search.replaceAll(" ", "%20")
-    var youtube_token = "&key=AIzaSyDnRjNh8SNxSrHF4kpEZUEhjfPL0CBL_f0";
+    var youtube_token = "&key=AIzaSyCkGs7BbWf7YcoBdu9Waq6C3rlusyZisyw";
     var youtube_full_api = youtube_api + search + youtube_token;
     fetch(youtube_full_api)
     .then(function (response) {
@@ -25,9 +26,7 @@ function get_youtube_api() {
         save("video_id", data.items[0].id.videoId);
     });
     return;
-    
 }
-
 
 // Get API from genius api 
 function get_genius_api() {
@@ -46,8 +45,7 @@ function get_genius_api() {
         }
         save("song", song_bank);
     });
-    return;
-    
+    return;    
 }
 
 // Save optioin for local storage
