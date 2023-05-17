@@ -6,6 +6,7 @@ function get_yt_api() {
     var search = "instrumental";
     var yt_token = "AIzaSyA2ldRFpHlI-TC8goSG6rVQFJBWQzVLyzM";
     var yt_full_api = yt_api + search + yt_token;
+    var search = "";
 }
 
 
