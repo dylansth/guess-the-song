@@ -20,9 +20,6 @@ function get_genius_api() {
         .then(function (response) {
             return response.json();
         })
-        .then(function (response) {
-            return response.json();
-        })
         .then(function (data) {
             for (var i = 0; i < data.response.hits.length; i++) {
                 song_bank.push(data.response.hits[i].result.title);
