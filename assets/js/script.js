@@ -9,7 +9,7 @@ function get_yt_api() {
 }
 
 
-
+// Get API from genius api 
 function get_genius_api() {
     var genius_api = "https://api.genius.com/search?q=";
     var genius_artist = "ladygaga";
