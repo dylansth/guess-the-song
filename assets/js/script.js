@@ -1,5 +1,16 @@
 
-function getApi() {
+
+
+function get_yt_api() {
+    var yt_api = "https:youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
+    var search = "instrumental";
+    var yt_token = "AIzaSyA2ldRFpHlI-TC8goSG6rVQFJBWQzVLyzM";
+    var yt_full_api = yt_api + search + yt_token;
+}
+
+
+
+function get_genius_api() {
     var genius_api = "https://api.genius.com/search?q=";
     var genius_artist = "ladygaga";
     var genius_token = "&access_token=wAfiQh7brLmlaaRzG7qxg6hUPKkOlajQPF1WWJy3-x8UEgTvBELbqtjag3mtB61G";
@@ -15,7 +26,8 @@ function getApi() {
             song_bank.push(data.response.hits[i].result.title);
         }
     });
-    localStorage.setItem("song_bank", JSON.stringify(myBlogs));
+    localStorage.setItem("song_bank", JSON.stringify(song_bank));
     return;
 }
-getApi();
+get_genius_api();
+get_yt_api();
