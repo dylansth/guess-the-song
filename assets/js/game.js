@@ -16,6 +16,7 @@ var answerD = document.getElementById("answerD");
 
 var songArray = load("song");
 
+
 // Randomly selects users choices
 function randomchoiceA(songArray) {
     var rng = Math.floor(Math.random() * songArray.length);
@@ -52,12 +53,24 @@ console.log(choiceD);
 
 //Append variables to HTML buttons
 function userQuestions() {
+    getYoutube(choiceA)
     answerA.textContent = choiceA;
+    answerA.setAttribute("data-answer","correct");
     answerB.textContent = choiceB;
+    answerB.setAttribute("data-answer","incorrect");
     answerC.textContent = choiceC;
+    answerC.setAttribute("data-answer","incorrect");
     answerD.textContent = choiceD;
+    answerD.setAttribute("data-answer","incorrect");
 }
 
 userQuestions();
+
+//Event Listener for Buttons
+answerA.addEventListener('click', function(event){
+    event.preventDefault();
+    answerB.getAttribute("data-answer");
+    console.log(answerA.getAttribute("data-answer"))
+})
 
 
