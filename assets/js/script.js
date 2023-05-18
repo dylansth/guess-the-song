@@ -11,8 +11,8 @@ highScoreBtn.addEventListener('click', highScoreBtnHandler)
 var genius_artist = "alanwalker";
 
 // excute functions
-get_youtube_api();
-get_genius_api();
+// get_youtube_api();
+// get_genius_api();
 
 
 // require functions
@@ -21,7 +21,7 @@ function get_youtube_video() {
     var youtube = "https://www.youtube.com/watch?v=";
     var youtube_links = [];
     var youtube_ids = load("video_id");
-    for (var i = 0; i < 10; i ++) {
+    for (var i = 0; i < 10; i++) {
         var youtube_link = youtube + youtube_ids[i];
         youtube_links.push(youtube_link);
     }
@@ -58,18 +58,18 @@ function get_genius_api() {
     // Fetching the genius song api
     fetch(genius_full_api)
 
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        // Storing all the song titles of a specific artist
-        for (var i = 0; i < data.response.hits.length; i ++) {
-            song_bank.push(data.response.hits[i].result.title);
-        }
-        // Storing all the songs in a local storage
-        save("song", song_bank);
-    });
-    return;    
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            // Storing all the song titles of a specific artist
+            for (var i = 0; i < data.response.hits.length; i++) {
+                song_bank.push(data.response.hits[i].result.title);
+            }
+            // Storing all the songs in a local storage
+            save("song", song_bank);
+        });
+    return;
 }
 
 // Save optioin for local storage
@@ -78,7 +78,7 @@ function save(option, data) {
     if (option === "song") {
         localStorage.setItem("song", JSON.stringify(data));
     } else if (option === "user") {
-        localStorage.setItem("user", data);
+        localStorage.setItem("user", JSON.stringify(data));
     } else if (option === "score") {
         localStorage.setItem("score", data);
     } else if (option === "video_id") {
@@ -95,14 +95,14 @@ function load(option) {
     if (option === "song") {
         return JSON.parse(localStorage.getItem("song"));
     } else if (option === "user") {
-        return localStorage.getItem("user");
+        return JSON.parse(localStorage.getItem("user"));
     } else if (option === "score") {
         return localStorage.getItem("score");
     } else if (option === "video_id") {
         return JSON.parse(localStorage.getItem("video_id"));
     } else if (option === "video_link") {
         return JSON.parse(localStorage.getItem("video_link"));
-    } 
+    }
 }
 
 
@@ -118,8 +118,9 @@ function playBtnHandler(event) {
     } else {
         users = []
         users.push(userName)
-        save('user', users)
     }
+    save('user', users)
+    userInput.value = ''
     window.location.replace('./pages/game.html')
 }
 
