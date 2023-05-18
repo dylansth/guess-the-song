@@ -20,12 +20,18 @@
         <img>
     </header>
     <main>
-        <input id="user-input">
+        <div class="container">
+            <form id="inputheading">
+                <div class="mb-3">
+                <label for="" class="form-label">User Name</label>
+                <input type="text" class="form-control text-center" id="user-input" aria-describedby="">
+                <div id="goodluckMsg" class="form-text">Good Luck!</div>
+                </div>
 
-        <div>
-            <button><a href="./pages/game.html" class="fw-bold text-decoration-none">PLAY</a></button>
-            <button id="play-btn">Play</button>
-            <button id="high-score-btn">High Scores</button>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button id="play-btn" class="btn btn-success">Play</button>                
+                <button id="high-score-btn" class="btn btn-info">High Scores</button>
+            </div>
         </div>
     </main>
     <script src="./assets/js/script.js"></script>
