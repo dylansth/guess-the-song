@@ -69,7 +69,8 @@ function get_genius_api() {
                 song_bank.push(data.response.hits[i].result.title);
             }
             // Storing all the songs in a local storage
-            save("song", song_bank);
+            save("song_q", song_bank);
+            save("song_a", song_bank);
         });
     return;
 }
@@ -80,8 +81,10 @@ get_youtube_video();
 // Save optioin for local storage
 function save(option, data) {
     // If options is equal to a certain parameter, then the data is saved
-    if (option === "song") {
-        localStorage.setItem("song", JSON.stringify(data));
+    if (option === "song_q") {
+        localStorage.setItem("song_q", JSON.stringify(data));
+    } else if (option === "song_a") {
+        localStorage.setItem("song_a", JSON.stringify(data));
     } else if (option === "user") {
         localStorage.setItem("user", JSON.stringify(data));
     } else if (option === "score") {
@@ -97,8 +100,10 @@ function save(option, data) {
 // Load function
 function load(option) {
     // If options iss equal to a certain parameter, then the data is loaded 
-    if (option === "song") {
-        return JSON.parse(localStorage.getItem("song"));
+    if (option === "song_q") {
+        return JSON.parse(localStorage.getItem("song_q"));
+    } else if (option === "song_a") {
+        return JSON.parse(localStorage.getItem("song_a"));
     } else if (option === "user") {
         return JSON.parse(localStorage.getItem("user"));
     } else if (option === "score") {
