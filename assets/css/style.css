@@ -11,6 +11,8 @@
     --clearscoreButton: rgb(20, 161, 161);
     --playagainBorder: cyan;
     --clearscoreBorder: rgb(171, 38, 127);
+    --clicktoListen: rgb(98, 248, 248, 0.57);
+    --answerResultcolor: rgba(151, 30, 111, 0.699);
     --mainfonts: Verdana, Tahoma, sans-serif;
 }
 
@@ -47,13 +49,28 @@ h1 {
     margin-bottom: 30px;
 }
 
+h4 {
+   margin-top: 25px;
+   font-size: 80%;
+   margin-right: 350px;
+   color: var(--maincolor);
+}
+
 #video {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     border: 3px solid var(--maincolor);
 }
 
+h2 {
+   font-size: 100%;
+   font-weight: bold;
+   color: var(--white) 
+}
 
+#answerGroup {
+    margin-top: 25px;
+}
 
 #answerA {
     background-color: var(--answerBubblecolor);
