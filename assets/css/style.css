@@ -3,7 +3,10 @@
     --maincolor: cyan;
     --accentcolor: rgb(208, 47, 154);
     --primarydarkcolor: rgb(59, 58, 58);
-    --seconddarkcolor: rgba(182, 182, 182, 0.511);
+    --seconddarkcolor: rgb(182, 182, 182, 0.511);
+    --answerBubblecolor: rgb(180, 19, 126);
+    --answerBubbleborder: cyan;
+    --answerHover: rgb(163, 42, 123);
     --mainfonts: Verdana, Tahoma, sans-serif;
 }
 
@@ -43,6 +46,59 @@ h1 {
 #video {
     margin-top: 50px;
     margin-bottom: 50px;
+    border: 3px solid var(--maincolor);
 }
 
 
+
+#answerA {
+    background-color: var(--answerBubblecolor);
+    border: 3px solid var(--answerBubbleborder);
+    filter: grayscale(50%);
+    opacity: 75%;
+}
+
+#answerB {
+    background-color: var(--answerBubblecolor);
+    border: 3px solid var(--answerBubbleborder);
+    filter: grayscale(50%);
+    opacity: 75%;
+}
+
+#answerC {
+    background-color: var(--answerBubblecolor);
+    border: 3px solid var(--answerBubbleborder);
+    filter: grayscale(50%);
+    opacity: 75%;
+}
+
+#answerD {
+    background-color: var(--answerBubblecolor);
+    border: 3px solid var(--answerBubbleborder);
+    filter: grayscale(50%);
+    opacity: 75%;
+}
+
+#answerA:hover {
+    filter: grayscale(0%);
+    opacity: 100%;
+    transition: 500ms;
+}
+
+#answerB:hover {
+    filter: grayscale(0%);
+    opacity: 100%;
+    transition: 500ms;
+}
+
+#answerC:hover {
+    filter: grayscale(0%);
+    opacity: 100%;
+    transition: 500ms;
+}
+
+#answerD:hover {
+    filter: grayscale(0%);
+    opacity: 100%;
+    transition: 500ms;
+}
