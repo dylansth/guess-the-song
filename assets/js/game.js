@@ -69,6 +69,13 @@ function generate_3questions(answer) {
 
   
 
-//Append variables to HTML buttons
-generate_questions(songArray, song_links);
+//Append variables to HTML button
+
+//Event Listener for Buttons
+answerA.addEventListener('click', function(event){
+    event.preventDefault();
+    answerB.getAttribute("data-answer");
+    console.log(answerA.getAttribute("data-answer"))
+})
+
 
