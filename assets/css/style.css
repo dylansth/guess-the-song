@@ -1,0 +1,25 @@
+:root {
+    --white: white;
+    --maincolor: cyan;
+    --accentcolor: rgb(149, 7, 102);
+    --primarydarkcolor: rgb(59, 58, 58);
+    --mainfonts: Verdana, Tahoma, sans-serif;
+}
+
+body {
+    text-align: center;
+    line-height: 25px;
+    padding-left: 5px;
+    padding-top: 5px;
+    margin: 0;
+    font-family: var(--mainfonts);
+    background-color: var(--primarydarkcolor);
+}
+
+h1 {
+    background-color: var(--primarydarkcolor);
+    flex-wrap: wrap;
+    padding: 1%;
+    justify-content: space-between;
+}
+
