@@ -7,6 +7,10 @@
     --answerBubblecolor: rgb(180, 19, 126);
     --answerBubbleborder: cyan;
     --answerHover: rgb(163, 42, 123);
+    --playagainFinished: rgb(208, 47, 154);
+    --clearscoreButton: rgb(20, 161, 161);
+    --playagainBorder: cyan;
+    --clearscoreBorder: rgb(171, 38, 127);
     --mainfonts: Verdana, Tahoma, sans-serif;
 }
 
@@ -98,6 +102,56 @@ h1 {
 }
 
 #answerD:hover {
+    filter: grayscale(0%);
+    opacity: 100%;
+    transition: 500ms;
+}
+
+h3 {
+    background-color: var(--seconddarkcolor);
+    color: var(--maincolor);
+    border: 3px solid var(--maincolor);
+    display: inline-block;
+    flex-wrap: wrap;
+    padding: 25px;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+#scoreUl {
+    margin-top: 20px;
+    max-width: 33%;
+    display: flex;
+    justify-content: center;
+    line-height: 2px;
+    list-style-type: none;
+}
+
+#buttonFooter {
+    margin-top: 30px;
+}
+
+#thePlayagain {
+    background-color: var(--playagainFinished);
+    border: 3px solid var(--playagainBorder);
+    filter: grayscale(50%);
+    opacity: 75%;
+}
+
+#thePlayagain:hover {
+    filter: grayscale(0%);
+    opacity: 100%;
+    transition: 500ms;
+}
+
+#theClearscore {
+    background-color: var(--clearscoreButton);
+    border: 3px solid var(--clearscoreBorder);
+    filter: grayscale(50%);
+    opacity: 75%;
+}
+
+#theClearscore:hover {
     filter: grayscale(0%);
     opacity: 100%;
     transition: 500ms;
