@@ -5,7 +5,7 @@ var mainEl = bodyEl.children[1]
 var listEl = mainEl.children[0].children[0]
 var goHomeBtn = mainEl.children[0].children[1]
 var clearScoresBtn = mainEl.children[0].children[2]
-var scores = ['Tony', 'Milad', 'Dylan']
+
 
 console.log(listEl, goHomeBtn)
 // loading page
@@ -22,20 +22,24 @@ function goHomeBtn_handler() {
     window.location.replace('../index.html')
 }
 function clearScoresBtn_handler() {
-    console.log('clearScoresBtn')
+    save('user', [])
+    save('score', [])
+    window.location.reload()
 }
 
 // display the scores page
-function display(list) {
-    console.log(list)
-    for (var i = 0; i < list.length; i++) {
+function display(users, scores) {
+    console.log(users, scores)
+    for (var i = 0; i < users.length; i++) {
         var liEl = document.createElement('li')
-        liEl.textContent = list[i]
+        liEl.textContent = users[i] + ": " + scores[i]
         listEl.append(liEl)
     }
 }
 // loading page function
 function scorePageLoad() {
-    display(scores)
+    var users = load('user')
+    var scores = users
+    display(users, scores)
 }
 
