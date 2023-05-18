@@ -79,6 +79,7 @@ function generate_questions() {
       save('score', scores)
       // window.location.replace("./score.html");
     }
+
     save("song_q", song_q);
     save("video_link", id_img);
   }
