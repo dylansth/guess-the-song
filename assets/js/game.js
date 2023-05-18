@@ -69,6 +69,7 @@ function generate_questions() {
     }
     if (song_q.length === 0) {
       var scores = load('score')
+      window.location.replace("./score.html");
       if (scores) {
         scores.push(score)
       } else {
@@ -76,7 +77,7 @@ function generate_questions() {
         scores.push(score)
       }
       save('score', scores)
-      window.location.replace("./score.html");
+      // window.location.replace("./score.html");
     }
     save("song_q", song_q);
     save("video_link", id_img);
@@ -114,17 +115,17 @@ function randomize(array) {
 
 //Event Listener for Buttons
 
-answerA.addEventListener('click', function(event){
-    event.preventDefault();
-    if (answerA.getAttribute("data-answer") === "correct") {
-      score = score + 100;
-      generate_questions();
-      previous.innerHTML = "Your Previous Answer Was Correct 👌👌👌";
-    } else {
-      score;
-      generate_questions();
-      previous.innerHTML = "Your Previous Answer Was Incorrect 😒😒😒";
-    }
+answerA.addEventListener('click', function (event) {
+  event.preventDefault();
+  if (answerA.getAttribute("data-answer") === "correct") {
+    score = score + 100;
+    generate_questions();
+    previous.innerHTML = "Your Previous Answer Was Correct 👌👌👌";
+  } else {
+    score;
+    generate_questions();
+    previous.innerHTML = "Your Previous Answer Was Incorrect 😒😒😒";
+  }
 
 })
 
