@@ -1,7 +1,21 @@
-// var frame = document.getElementById("video");
-// frame.setAttribute("src", get_youtube_video());
+
+// initial the html elements
+var playBtn = document.getElementById('play-btn')
+var highScoreBtn = document.getElementById('high-score-btn')
+var userInput = document.getElementById('user-input')
+// Play button event listener
+playBtn.addEventListener('click', playBtnHandler)
+highScoreBtn.addEventListener('click', highScoreBtnHandler)
+
+
 var genius_artist = "alanwalker";
 
+// excute functions
+get_youtube_api();
+get_genius_api();
+
+
+// require functions
 // Generate website
 function get_youtube_video() {
     var youtube = "https://www.youtube.com/watch?v=";
@@ -15,36 +29,20 @@ function get_youtube_video() {
 }
 
 // To get the specific video id using yt api
-function get_youtube_api() {
-    // // Youtube api root
-    // var youtube_api = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
-    // // Empty array that stores all yt links
-    // var youtube_ids = [];
-    // // 
-    // var song = load("song");
-    // // Fetch 10 times because that is all the songs per artist
-    // for (var i = 0; i < 10; i ++) {
-    //     // Making the specific search for the yt api
-    //     var search = song[i] + " " + genius_artist + " Instrumental";
-    //     // Replacing the original search to the with yt standards
-    //     search = search.replaceAll(" ", "%20")
-    //     // The yt api key
-    //     var youtube_token = "&key=AIzaSyCkGs7BbWf7YcoBdu9Waq6C3rlusyZisyw";
-    //     // Making the full yt api 
-    //     var youtube_full_api = youtube_api + search + youtube_token;
-    //     // Fetching the link 
-    //     fetch(youtube_full_api)
-    //     .then(function (response) {
-    //         return response.json();
-    //     })
-    //     .then(function (data) {
-    //         youtube_ids.push(search + data.items[0].id.videoId);
-    //         save("video_id", youtube_ids)
-    //     });
-    // }
-    // return;
-    var video_id = ["Rmtx9slmodw", "sK89EOD9Klw&ab", "W9F5xHWfmPs", "f1auh7D0NF4", "Yp7etMffYAc", "1RGsQVmkq2U", "lQFIe5STi3M", "s944sDlARUk", "YubPf3N26KY", "x6hWKp95Kp8"];
-    save("video_id", video_id)
+function get_youtube_api(song_index = 1) {
+    var youtube_api = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
+    // Change this songs[#] 
+    var search = JSON.parse(localStorage.getItem("songs"))[song_index] + " Instrumental";
+    search = search.replaceAll(" ", "%20")
+    var youtube_token = "&key=AIzaSyCkGs7BbWf7YcoBdu9Waq6C3rlusyZisyw";
+    var youtube_full_api = youtube_api + search + youtube_token;
+    fetch(youtube_full_api)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            save("video_id", data.items[0].id.videoId);
+        });
     return;
 }
 
@@ -59,6 +57,7 @@ function get_genius_api() {
     var song_bank = [];
     // Fetching the genius song api
     fetch(genius_full_api)
+
     .then(function (response) {
         return response.json();
     })
@@ -88,7 +87,7 @@ function save(option, data) {
         localStorage.setItem("video_link", JSON.stringify(data));
     }
     return;
-} 
+}
 
 // Load function
 function load(option) {
@@ -106,7 +105,26 @@ function load(option) {
     } 
 }
 
-get_youtube_api();
-get_genius_api();
-get_youtube_video();
 
+
+// handler
+// play button
+function playBtnHandler(event) {
+    event.preventDefault()
+    var userName = userInput.value
+    var users = load('user')
+    if (users) {
+        users.push(userName)
+    } else {
+        users = []
+        users.push(userName)
+        save('user', users)
+    }
+    window.location.replace('./pages/game.html')
+}
+
+//high score button
+function highScoreBtnHandler(event) {
+    event.preventDefault()
+    window.location.replace('./pages/score.html')
+}
