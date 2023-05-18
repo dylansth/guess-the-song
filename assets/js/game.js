@@ -11,6 +11,7 @@
 // Setting variables to the elements in the html 
 
 var score = 0;
+var score_track = document.getElementById("count");
 var questionHeading = document.getElementById("questionHeading");
 var buttons = document.getElementsByTagName("button");
 var iframe = document.getElementById("video");
@@ -68,18 +69,12 @@ function generate_questions() {
       }
     }
     if (song_q.length === 0) {
-      var scores = load('score')
-      if (scores) {
-        scores.push(score)
-      } else {
-        scores = []
-        scores.push(score)
-      }
-      save('score', scores)
+      var scores = load('score');
       window.location.replace("./score.html");
     }
     save("song_q", song_q);
     save("video_link", id_img);
+    score_track.textContent = "Your current score is: " + score + "⭐";
   }
 }
 
@@ -114,17 +109,17 @@ function randomize(array) {
 
 //Event Listener for Buttons
 
-answerA.addEventListener('click', function(event){
-    event.preventDefault();
-    if (answerA.getAttribute("data-answer") === "correct") {
-      score = score + 100;
-      generate_questions();
-      previous.innerHTML = "Your Previous Answer Was Correct 👌👌👌";
-    } else {
-      score;
-      generate_questions();
-      previous.innerHTML = "Your Previous Answer Was Incorrect 😒😒😒";
-    }
+answerA.addEventListener('click', function (event) {
+  event.preventDefault();
+  if (answerA.getAttribute("data-answer") === "correct") {
+    score = score + 100;
+    generate_questions();
+    previous.innerHTML = "Your Previous Answer Was Correct 👌👌👌";
+  } else {
+    score;
+    generate_questions();
+    previous.innerHTML = "Your Previous Answer Was Incorrect 😒😒😒";
+  }
 
 })
 
