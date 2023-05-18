@@ -69,6 +69,7 @@ function generate_questions() {
     }
     if (song_q.length === 0) {
       var scores = load('score')
+      window.location.replace("./score.html");
       if (scores) {
         scores.push(score)
       } else {
@@ -76,7 +77,6 @@ function generate_questions() {
         scores.push(score)
       }
       save('score', scores)
-      window.location.replace("./score.html");
     }
     save("song_q", song_q);
     save("video_link", id_img);
