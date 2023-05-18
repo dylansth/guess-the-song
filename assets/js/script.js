@@ -1,7 +1,18 @@
-var frame = document.getElementById("video");
-frame.setAttribute("src", get_youtube_video());
+// initial the html elements
+var playBtn = document.getElementById('play-btn')
+var highScoreBtn = document.getElementById('high-score-btn')
+var userInput = document.getElementById('user-input')
+// Play button event listener
+playBtn.addEventListener('click', playBtnHandler)
+highScoreBtn.addEventListener('click', highScoreBtnHandler)
 
 
+// // excute functions
+// get_youtube_api();
+// get_genius_api();
+
+
+// require functions
 // Generate website
 function get_youtube_video() {
     var youtube = "https://www.youtube.com/watch?v=";
@@ -19,12 +30,12 @@ function get_youtube_api(song_index = 1) {
     var youtube_token = "&key=AIzaSyCkGs7BbWf7YcoBdu9Waq6C3rlusyZisyw";
     var youtube_full_api = youtube_api + search + youtube_token;
     fetch(youtube_full_api)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        save("video_id", data.items[0].id.videoId);
-    });
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            save("video_id", data.items[0].id.videoId);
+        });
     return;
 }
 
@@ -37,16 +48,16 @@ function get_genius_api() {
     var song_bank = [];
     fetch(genius_full_api)
 
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        for (var i = 0; i < data.response.hits.length; i ++) {
-            song_bank.push(data.response.hits[i].result.title);
-        }
-        save("song", song_bank);
-    });
-    return;    
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            for (var i = 0; i < data.response.hits.length; i++) {
+                song_bank.push(data.response.hits[i].result.title);
+            }
+            save("song", song_bank);
+        });
+    return;
 }
 
 // Save optioin for local storage
@@ -61,7 +72,7 @@ function save(option, data) {
         localStorage.setItem("video_id", data);
     }
     return;
-} 
+}
 
 // Load function
 function load(option) {
@@ -76,6 +87,26 @@ function load(option) {
     }
 }
 
-get_youtube_api();
-get_genius_api();
 
+
+// handler
+// play button
+function playBtnHandler(event) {
+    event.preventDefault()
+    var userName = userInput.value
+    var users = load('user')
+    if (users) {
+        users.push(userName)
+    } else {
+        users = []
+        users.push(userName)
+        save('user', users)
+    }
+    window.location.replace('./pages/game.html')
+}
+
+//high score button
+function highScoreBtnHandler(event) {
+    event.preventDefault()
+    window.location.replace('./pages/score.html')
+}
