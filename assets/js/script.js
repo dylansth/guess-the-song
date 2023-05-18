@@ -121,7 +121,11 @@ function load(option) {
 // play button
 function playBtnHandler(event) {
     event.preventDefault()
-    var userName = userInput.value
+    var userName = (userInput.value)
+    if (userName === '') {
+        userName = 'UNKOWN'
+    }
+    userName = userName.toUpperCase()
     var users = load('user')
     if (users) {
         users.push(userName)
