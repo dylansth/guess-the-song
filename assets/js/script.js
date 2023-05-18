@@ -88,12 +88,12 @@ function save(option, data) {
     } else if (option === "user") {
         localStorage.setItem("user", JSON.stringify(data));
     } else if (option === "score") {
-        localStorage.setItem("score", JSON.stringify(data));
+        localStorage.setItem("score", data);
     } else if (option === "video_id") {
         localStorage.setItem("video_id", JSON.stringify(data));
     } else if (option === "video_link") {
         localStorage.setItem("video_link", JSON.stringify(data));
-    }
+    } 
     return;
 }
 
@@ -107,12 +107,13 @@ function load(option) {
     } else if (option === "user") {
         return JSON.parse(localStorage.getItem("user"));
     } else if (option === "score") {
-        return JSON.parse(localStorage.getItem("score"));
+        return localStorage.getItem("score");
     } else if (option === "video_id") {
         return JSON.parse(localStorage.getItem("video_id"));
     } else if (option === "video_link") {
         return JSON.parse(localStorage.getItem("video_link"));
     }
+    return; 
 }
 
 
@@ -142,4 +143,9 @@ function playBtnHandler(event) {
 function highScoreBtnHandler(event) {
     event.preventDefault()
     window.location.replace('./pages/score.html')
+}
+
+var file = load(song_q);
+if (file.length === 0) {
+    window.location("")
 }
