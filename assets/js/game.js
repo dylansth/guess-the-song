@@ -14,7 +14,7 @@ var score = 0;
 var questionHeading = document.getElementById("questionHeading");
 var buttons = document.getElementsByTagName("button");
 var iframe = document.getElementById("video");
-
+var previous = document.getElementById("answer");
 var answerA = document.getElementById("answerA");
 var answerB = document.getElementById("answerB");
 var answerC = document.getElementById("answerC");
@@ -111,20 +111,24 @@ answerA.addEventListener('click', function(event){
     if (answerA.getAttribute("data-answer") === "correct") {
       score = score + 100;
       generate_questions();
+      previous.innerHTML = "Your Previous Answer Was Correct 👌👌👌";
     } else {
       score;
       generate_questions();
+      previous.innerHTML = "Your Previous Answer Was Incorrect 😒😒😒";
     }
 })
 
 answerB.addEventListener('click', function(event){
   event.preventDefault();
-  if (answerB.getAttribute("data-answer") === "correct") {
+  if (answerB.getAttribute("data-answer") === "Correct") {
     score = score + 100;
     generate_questions();
+    previous.innerHTML = "Your Previous Answer Was Correct 👌👌👌";
   } else {
     score;
     generate_questions();
+    previous.innerHTML = "Your Previous Answer Was Incorrect 😒😒😒";
   }
 })
 
@@ -133,9 +137,11 @@ answerC.addEventListener('click', function(event){
   if (answerC.getAttribute("data-answer") === "correct") {
     score = score + 100;
     generate_questions();
+    previous.innerHTML = "Your Previous Answer Was Correct 👌👌👌";
   } else {
     score;
     generate_questions();
+    previous.innerHTML = "Your Previous Answer Was Incorrect 😒😒😒";
   }
 })
 
@@ -144,9 +150,11 @@ answerD.addEventListener('click', function(event){
   if (answerD.getAttribute("data-answer") === "correct") {
     score = score + 100;
     generate_questions();
+    previous.innerHTML = "Your Previous Answer Was Correct 👌👌👌";
   } else {
     score;
     generate_questions();
+    previous.innerHTML = "Your Previous Answer Was Incorrect 😒😒😒";
   }
 })
 
