@@ -1,8 +1,9 @@
 :root {
     --white: white;
     --maincolor: cyan;
-    --accentcolor: rgb(149, 7, 102);
+    --accentcolor: rgb(208, 47, 154);
     --primarydarkcolor: rgb(59, 58, 58);
+    --seconddarkcolor: rgba(182, 182, 182, 0.511);
     --mainfonts: Verdana, Tahoma, sans-serif;
 }
 
@@ -17,9 +18,24 @@ body {
 }
 
 h1 {
-    background-color: var(--primarydarkcolor);
+    background-color: var(--seconddarkcolor);
+    color: var(--maincolor);
+    border: 3px solid var(--maincolor);
+    display: inline-block;
     flex-wrap: wrap;
-    padding: 1%;
+    padding: 25px;
     justify-content: space-between;
+    margin-top: 25px;
 }
 
+#inputheading {
+    color: var(--accentcolor);
+    font-size: 150%;
+    margin-top: 15px;
+}
+
+#goodluckMsg {
+    font-size: 66%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
