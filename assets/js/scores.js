@@ -19,7 +19,7 @@ clearScoresBtn.addEventListener('click', clearScoresBtn_handler)
 
 // Button handler functions
 function goHomeBtn_handler() {
-    console.log('goHomeBtn')
+    window.location.reload('../pages')
 }
 function clearScoresBtn_handler() {
     console.log('clearScoresBtn')
