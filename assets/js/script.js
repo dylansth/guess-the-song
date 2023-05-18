@@ -7,9 +7,9 @@ playBtn.addEventListener('click', playBtnHandler)
 highScoreBtn.addEventListener('click', highScoreBtnHandler)
 
 
-// // excute functions
-// get_youtube_api();
-// get_genius_api();
+// excute functions
+get_youtube_api();
+get_genius_api();
 
 
 // require functions
