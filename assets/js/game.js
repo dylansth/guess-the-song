@@ -11,6 +11,7 @@
 // Setting variables to the elements in the html 
 
 var score = 0;
+var score_track = document.getElementById("count");
 var questionHeading = document.getElementById("questionHeading");
 var buttons = document.getElementsByTagName("button");
 var iframe = document.getElementById("video");
@@ -68,20 +69,12 @@ function generate_questions() {
       }
     }
     if (song_q.length === 0) {
-      var scores = load('score')
+      var scores = load('score');
       window.location.replace("./score.html");
-      if (scores) {
-        scores.push(score)
-      } else {
-        scores = []
-        scores.push(score)
-      }
-      save('score', scores)
-      // window.location.replace("./score.html");
     }
-
     save("song_q", song_q);
     save("video_link", id_img);
+    score_track.textContent = "Your current score is: " + score + "⭐";
   }
 }
 
