@@ -85,7 +85,7 @@ function save(option, data) {
     } else if (option === "user") {
         localStorage.setItem("user", JSON.stringify(data));
     } else if (option === "score") {
-        localStorage.setItem("score", data);
+        localStorage.setItem("score", JSON.stringify(data));
     } else if (option === "video_id") {
         localStorage.setItem("video_id", JSON.stringify(data));
     } else if (option === "video_link") {
@@ -102,7 +102,7 @@ function load(option) {
     } else if (option === "user") {
         return JSON.parse(localStorage.getItem("user"));
     } else if (option === "score") {
-        return localStorage.getItem("score");
+        return JSON.parse(localStorage.getItem("score"));
     } else if (option === "video_id") {
         return JSON.parse(localStorage.getItem("video_id"));
     } else if (option === "video_link") {

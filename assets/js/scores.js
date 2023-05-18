@@ -30,7 +30,7 @@ function clearScoresBtn_handler() {
 // display the scores page
 function display(users, scores) {
     console.log(users, scores)
-    for (var i = 0; i < users.length; i++) {
+    for (var i = 0; i < users.length || i < scores.length; i++) {
         var liEl = document.createElement('li')
         liEl.textContent = users[i] + ": " + scores[i]
         listEl.append(liEl)
@@ -39,7 +39,12 @@ function display(users, scores) {
 // loading page function
 function scorePageLoad() {
     var users = load('user')
-    var scores = users
-    display(users, scores)
+    var scores = load('score')
+    // var scores = [1, 2, 3, 4, 5]
+    if (users, scores) {
+        display(users, scores)
+    } else {
+        console.error('localStorage Connection losse')
+    }
 }
 
