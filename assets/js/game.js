@@ -9,9 +9,16 @@
 // Create user selections
 
 // Setting variables to the elements in the html 
+
+var score = 0;
 var questionHeading = document.getElementById("questionHeading");
 var buttons = document.getElementsByTagName("button");
 var iframe = document.getElementById("video");
+
+var answerA = document.getElementById("answerA");
+var answerB = document.getElementById("answerB");
+var answerC = document.getElementById("answerC");
+var answerD = document.getElementById("answerD");
 
 // Loading the songs and video links
 var songArray = load("song");
@@ -41,6 +48,7 @@ function generate_questions(song, id) {
     // The option array takes in the correct answer
     options.push(song_q[ran]);
     var answer = song_q[ran];
+    console.log(answer);
     // Removes the question asked so it doesn't repeat
     song_q = song_q.filter(item => item != song_q[ran]);
     // Removes the link so it doesn't repeat
@@ -52,12 +60,10 @@ function generate_questions(song, id) {
     options = randomize(options);
     for (var i = 0; i < 4; i ++) {
       buttons[i].textContent = options[i];
-    }
-    for (var i = 0; i < 4; i ++ ) {
       if (buttons[i].textContent === answer) {
         buttons[i].setAttribute("data-answer", "correct");
       } else {
-        buttons[i].setAttribute("data-answer", "uncorrect");
+        buttons[i].setAttribute("data-answer", "incorrect");
       }
     }
 }
@@ -97,8 +103,38 @@ generate_questions(songArray, song_links);
 //Event Listener for Buttons
 answerA.addEventListener('click', function(event){
     event.preventDefault();
-    answerB.getAttribute("data-answer");
-    console.log(answerA.getAttribute("data-answer"))
+    if (answerA.getAttribute("data-answer") === "correct") {
+      score = score + 100;
+    } else {
+      score;
+    }
+})
+
+answerB.addEventListener('click', function(event){
+  event.preventDefault();
+  if (answerB.getAttribute("data-answer") === "correct") {
+    score = score + 100;
+  } else {
+    score;
+  }
+})
+
+answerC.addEventListener('click', function(event){
+  event.preventDefault();
+  if (answerC.getAttribute("data-answer") === "correct") {
+    score = score + 100;
+  } else {
+    score;
+  }
+})
+
+answerD.addEventListener('click', function(event){
+  event.preventDefault();
+  if (answerD.getAttribute("data-answer") === "correct") {
+    score = score + 100;
+  } else {
+    score;
+  }
 })
 
 

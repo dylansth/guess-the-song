@@ -3,7 +3,7 @@
 var playBtn = document.getElementById('play-btn')
 var highScoreBtn = document.getElementById('high-score-btn')
 var userInput = document.getElementById('user-input')
-// Play button event listener
+// Play button event listener No functions for now
 playBtn.addEventListener('click', playBtnHandler)
 highScoreBtn.addEventListener('click', highScoreBtnHandler)
 
@@ -29,20 +29,22 @@ function get_youtube_video() {
 }
 
 // To get the specific video id using yt api
-function get_youtube_api(song_index = 1) {
-    var youtube_api = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
-    // Change this songs[#] 
-    var search = JSON.parse(localStorage.getItem("songs"))[song_index] + " Instrumental";
-    search = search.replaceAll(" ", "%20")
-    var youtube_token = "&key=AIzaSyCkGs7BbWf7YcoBdu9Waq6C3rlusyZisyw";
-    var youtube_full_api = youtube_api + search + youtube_token;
-    fetch(youtube_full_api)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            save("video_id", data.items[0].id.videoId);
-        });
+function get_youtube_api() {
+    // var youtube_api = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
+    // // Change this songs[#] 
+    // var search = JSON.parse(localStorage.getItem("songs"))[song_index] + " Instrumental";
+    // search = search.replaceAll(" ", "%20")
+    // var youtube_token = "&key=AIzaSyCkGs7BbWf7YcoBdu9Waq6C3rlusyZisyw";
+    // var youtube_full_api = youtube_api + search + youtube_token;
+    // fetch(youtube_full_api)
+    //     .then(function (response) {
+    //         return response.json();
+    //     })
+    //     .then(function (data) {
+    //         save("video_id", data.items[0].id.videoId);
+    //     });
+    var video_id = ["Rmtx9slmodw", "sK89EOD9Klw&ab", "W9F5xHWfmPs", "f1auh7D0NF4", "Yp7etMffYAc", "1RGsQVmkq2U", "lQFIe5STi3M", "s944sDlARUk", "YubPf3N26KY", "x6hWKp95Kp8"];
+    save("video_id", video_id);
     return;
 }
 
@@ -71,6 +73,9 @@ function get_genius_api() {
         });
     return;
 }
+get_genius_api();
+get_youtube_api();
+get_youtube_video();
 
 // Save optioin for local storage
 function save(option, data) {
