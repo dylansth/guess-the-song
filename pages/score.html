@@ -13,15 +13,18 @@
 
 <body>
     <header>
-        <h3>Scores Board</h3>
+        <h3>Score Board</h3>
     </header>
     <main>
-        <section>
-            <ul>
-            </ul>
-            <button>Play Again!</button>
-            <button>Clear Scroes</button>
+
+        <ul id="scoreUl" class="list-group container-fluid">
+            <li id="highscoreList" class="list-group-item"></li>
+        </ul>
+        <section id="buttonFooter">
+            <button id="thePlayagain" class="btn btn-primary" type="button">Play Again!</button>
+            <button id="theClearscore" class="btn btn-primary" type="button">Clear Highscores</button>
         </section>
+
     </main>
 
 </body>
