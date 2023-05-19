@@ -146,10 +146,10 @@ h3 {
 }
 
 /* Scoreboard List */
-#scoreUl {
+#thescoreBoard {
     margin-top: 20px;
     max-width: 33%;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     line-height: 2px;
     list-style-type: none;
