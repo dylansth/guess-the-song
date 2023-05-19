@@ -3,6 +3,7 @@
 var playBtn = document.getElementById('play-btn')
 var highScoreBtn = document.getElementById('high-score-btn')
 var userInput = document.getElementById('user-input')
+var reload = document.getElementById("reload-btn");
 
 // prevent form loading in other pages
 if ((window.location.href).includes('index.html')) {
@@ -10,6 +11,8 @@ if ((window.location.href).includes('index.html')) {
     playBtn.addEventListener('click', playBtnHandler)
     highScoreBtn.addEventListener('click', highScoreBtnHandler)
 }
+
+
 
 
 var genius_artist = "coldplay";
@@ -46,7 +49,7 @@ function get_genius_api() {
 function get_youtube_api() {
     // Basic variables for the youtube_api 
     var youtube_api = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
-    var youtube_token = "&key=AIzaSyCX0atYZzTGj16S77WnAC08VbHgj3gq94c";
+    var youtube_token = "&key=AIzaSyALCefgMwpp1cTKw-lYMFfrRJAet8vyOrQ";
     // Loading the songs that the user wants to search 
     var song = load("song_q"); 
     var video_title = [];
@@ -155,6 +158,11 @@ function highScoreBtnHandler(event) {
     event.preventDefault()
     window.location.replace('./pages/score.html')
 }
+
+reload.addEventListener("click", function(event) {
+    event.preventDefault();
+    location.reload();
+})
 
 get_genius_api();
 get_youtube_api();
