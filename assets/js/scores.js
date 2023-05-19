@@ -1,11 +1,9 @@
 // initial the element fom html
-var bodyEl = document.querySelector('body')
-var headerEl = bodyEl.children[0]
-var mainEl = bodyEl.children[1]
-var listEl = mainEl.children[0].children[0]
-var goHomeBtn = mainEl.children[0].children[1]
-var clearScoresBtn = mainEl.children[0].children[2]
 
+var listEl = document.getElementById('scoreUl')
+var goHomeBtn = document.getElementById('thePlayagain')
+var clearScoresBtn = document.getElementById('theClearscore')
+var play_again_btn = document.getElementById("thePlay")
 
 console.log(listEl, goHomeBtn)
 // loading page
@@ -14,17 +12,22 @@ scorePageLoad()
 // button event listener
 goHomeBtn.addEventListener('click', goHomeBtn_handler)
 clearScoresBtn.addEventListener('click', clearScoresBtn_handler)
-
+play_again_btn.addEventListener("click", play_again_handler)
 
 
 // Button handler functions
 function goHomeBtn_handler() {
     window.location.replace('../index.html')
 }
+
 function clearScoresBtn_handler() {
     save('user', [])
     save('score', [])
     window.location.reload()
+}
+
+function play_again_handler() {
+    window.location.replace("../pages/game.html");
 }
 
 // display the scores page
@@ -32,6 +35,7 @@ function display(users, scores) {
     console.log(users, scores)
     for (var i = 0; i < users.length || i < scores.length; i++) {
         var liEl = document.createElement('li')
+        liEl.setAttribute('class', "list-group-item")
         liEl.textContent = users[i] + ": " + scores[i]
         listEl.append(liEl)
     }

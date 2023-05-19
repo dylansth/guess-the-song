@@ -11,6 +11,7 @@
 // Setting variables to the elements in the html 
 
 var score = 0;
+var score_track = document.getElementById("count");
 var questionHeading = document.getElementById("questionHeading");
 var buttons = document.getElementsByTagName("button");
 var iframe = document.getElementById("video");
@@ -29,9 +30,12 @@ function rand(max) {
 }
 
 
+save("song_q", load("song_o"));
+save("song_a", load("song_o"));
+save("video_link", load("video_link_o"));
+
 // Generates the questions and the iframe
 function generate_questions() {
-  var id = load("video_link");
   // Setting up local variables
   // Song question
   var song_q = load("song_q");;
@@ -67,20 +71,28 @@ function generate_questions() {
         buttons[i].setAttribute("data-answer", "incorrect");
       }
     }
+
+
     if (song_q.length === 0) {
-      var scores = load('score')
-      if (scores) {
-        scores.push(score)
-      } else {
-        scores = []
-        scores.push(score)
-      }
-      save('score', scores)
+      scoreSaveHandler(score, song_q.length);
       window.location.replace("./score.html");
     }
     save("song_q", song_q);
     save("video_link", id_img);
+    score_track.textContent = "Your current score is: " + score + "⭐";
   }
+}
+
+function scoreSaveHandler(s, sq) {
+  var scores = load('score')
+  console.log(s, sq)
+  if (scores) {
+    scores.push(s)
+  } else {
+    scores = []
+    scores.push(s)
+  }
+  save('score', scores)
 }
 
 // Picks out the other 3 options
@@ -114,17 +126,17 @@ function randomize(array) {
 
 //Event Listener for Buttons
 
-answerA.addEventListener('click', function(event){
-    event.preventDefault();
-    if (answerA.getAttribute("data-answer") === "correct") {
-      score = score + 100;
-      generate_questions();
-      previous.innerHTML = "Your Previous Answer Was Correct 👌👌👌";
-    } else {
-      score;
-      generate_questions();
-      previous.innerHTML = "Your Previous Answer Was Incorrect 😒😒😒";
-    }
+answerA.addEventListener('click', function (event) {
+  event.preventDefault();
+  if (answerA.getAttribute("data-answer") === "correct") {
+    score = score + 100;
+    generate_questions();
+    previous.innerHTML = "Your Previous Answer Was Correct 👌👌👌";
+  } else {
+    score;
+    generate_questions();
+    previous.innerHTML = "Your Previous Answer Was Incorrect 😒😒😒";
+  }
 
 })
 
