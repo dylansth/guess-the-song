@@ -3,7 +3,7 @@
 var listEl = document.getElementById('scoreUl')
 var goHomeBtn = document.getElementById('thePlayagain')
 var clearScoresBtn = document.getElementById('theClearscore')
-
+var play_again_btn = document.getElementById("thePlay")
 
 console.log(listEl, goHomeBtn)
 // loading page
@@ -12,17 +12,22 @@ scorePageLoad()
 // button event listener
 goHomeBtn.addEventListener('click', goHomeBtn_handler)
 clearScoresBtn.addEventListener('click', clearScoresBtn_handler)
-
+play_again_btn.addEventListener("click", play_again_handler)
 
 
 // Button handler functions
 function goHomeBtn_handler() {
     window.location.replace('../index.html')
 }
+
 function clearScoresBtn_handler() {
     save('user', [])
     save('score', [])
     window.location.reload()
+}
+
+function play_again_handler() {
+    window.location.replace("../pages/game.html");
 }
 
 // display the scores page

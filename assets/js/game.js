@@ -30,9 +30,12 @@ function rand(max) {
 }
 
 
+save("song_q", load("song_o"));
+save("song_a", load("song_o"));
+save("video_link", load("video_link_o"));
+
 // Generates the questions and the iframe
 function generate_questions() {
-  var id = load("video_link");
   // Setting up local variables
   // Song question
   var song_q = load("song_q");;
@@ -71,7 +74,7 @@ function generate_questions() {
 
 
     if (song_q.length === 0) {
-      scoreSaveHandler(score, song_q.length)
+      scoreSaveHandler(score, song_q.length);
       window.location.replace("./score.html");
     }
     save("song_q", song_q);

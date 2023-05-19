@@ -12,47 +12,7 @@ if ((window.location.href).includes('index.html')) {
 }
 
 
-var genius_artist = "alanwalker";
-
-// excute functions
-// get_youtube_api();
-// get_genius_api();
-
-
-// require functions
-// Generate website
-function get_youtube_video() {
-    var youtube = "https://www.youtube.com/watch?v=";
-    var youtube_links = [];
-    var youtube_ids = load("video_id");
-    for (var i = 0; i < 10; i++) {
-        var youtube_link = youtube + youtube_ids[i];
-        youtube_links.push(youtube_link);
-    }
-    save("video_link", youtube_links)
-}
-
-// To get the specific video id using yt api
-function get_youtube_api() {
-    // var youtube_api = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
-    // var youtube_token = "&key=AIzaSyCkGs7BbWf7YcoBdu9Waq6C3rlusyZisyw";
-    // for (var i = 0; i < 10; i ++) { 
-    //     var song_q = load("song_q"); 
-    //     var search = youtube_api + song_q[i] + " " + genius_artist + " Instrumental";
-    //     search = search.replaceAll(" ", "%20")
-    //     var youtube_full_api = youtube_api + search + youtube_token;
-    //     fetch(youtube_full_api)
-    //         .then(function (response) {
-    //             return response.json();
-    //         })
-    //         .then(function (data) {
-    //             save("video_id", data.items[0].id.videoId);
-    //         });
-    var video_id = ["Rmtx9slmodw", "sK89EOD9Klw&ab", "W9F5xHWfmPs", "f1auh7D0NF4", "Yp7etMffYAc", "1RGsQVmkq2U", "lQFIe5STi3M", "s944sDlARUk", "YubPf3N26KY", "x6hWKp95Kp8"];
-    save("video_id", video_id);
-    // }
-    return;
-}
+var genius_artist = "coldplay";
 
 // Get API from genius api 
 function get_genius_api() {
@@ -77,12 +37,49 @@ function get_genius_api() {
             // Storing all the songs in a local storage
             save("song_q", song_bank);
             save("song_a", song_bank);
+            save("score", []);
         });
     return;
 }
-get_genius_api();
-get_youtube_api();
-get_youtube_video();
+
+// To get the specific video id using yt api
+function get_youtube_api() {
+    // Basic variables for the youtube_api 
+    var youtube_api = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
+    var youtube_token = "&key=AIzaSyCX0atYZzTGj16S77WnAC08VbHgj3gq94c";
+    // Loading the songs that the user wants to search 
+    var song = load("song_q"); 
+    var video_title = [];
+    var video_link = [];
+    var youtube = "https://www.youtube.com/watch?v=";
+    console.log(song);
+    // A fetch loops that runs 10 times that matches the 10 songs each artist has
+    for (var i = 0; i < 10; i ++) {  
+        console.log(song[i]);
+        // Replacing the search with the search parameters of the api
+        var search = song[i] + " " + genius_artist + " lyrics";
+        search = search.replaceAll(" ", "%20")
+        var youtube_full_api = youtube_api + search + youtube_token;
+        // Feching one link at a time
+        fetch(youtube_full_api)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            var title = data.items[0].snippet.title;
+            var id = youtube + data.items[0].id.videoId;
+            video_title.push(title);
+            video_link.push(id);
+            // Updating the song and song link to the local storage
+            save("song_q", video_title);
+            save("song_a", video_title);
+            save("song_o", video_title);
+            save("video_link", video_link);
+            save("video_link_o", video_link);
+        }); 
+    }
+    return;
+}
 
 // Save optioin for local storage
 function save(option, data) {
@@ -91,6 +88,8 @@ function save(option, data) {
         localStorage.setItem("song_q", JSON.stringify(data));
     } else if (option === "song_a") {
         localStorage.setItem("song_a", JSON.stringify(data));
+    } else if (option === "song_o") {
+        localStorage.setItem("song_o", JSON.stringify(data));
     } else if (option === "user") {
         localStorage.setItem("user", JSON.stringify(data));
     } else if (option === "score") {
@@ -99,17 +98,21 @@ function save(option, data) {
         localStorage.setItem("video_id", JSON.stringify(data));
     } else if (option === "video_link") {
         localStorage.setItem("video_link", JSON.stringify(data));
-    }
+    } else if (option === "video_link_o") {
+        localStorage.setItem("video_link_o", JSON.stringify(data));
+    } 
     return;
 }
 
 // Load function
 function load(option) {
-    // If options iss equal to a certain parameter, then the data is loaded 
+    // If options is equal to a certain parameter, then the data is loaded 
     if (option === "song_q") {
         return JSON.parse(localStorage.getItem("song_q"));
     } else if (option === "song_a") {
         return JSON.parse(localStorage.getItem("song_a"));
+    } else if (option === "song_o") {
+        return JSON.parse(localStorage.getItem("song_o"));
     } else if (option === "user") {
         return JSON.parse(localStorage.getItem("user"));
     } else if (option === "score") {
@@ -118,6 +121,8 @@ function load(option) {
         return JSON.parse(localStorage.getItem("video_id"));
     } else if (option === "video_link") {
         return JSON.parse(localStorage.getItem("video_link"));
+    } else if (option === "video_link_o") {
+        return JSON.parse(localStorage.getItem("video_link_o"));
     }
     return;
 }
@@ -151,7 +156,5 @@ function highScoreBtnHandler(event) {
     window.location.replace('./pages/score.html')
 }
 
-var file = load(song_q);
-if (file.length === 0) {
-    window.location("")
-}
+get_genius_api();
+get_youtube_api();
