@@ -51,7 +51,7 @@ function get_youtube_api() {
     var youtube_api = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
     var youtube_token = "&key=AIzaSyAxZOloVtGYHMx-MtdonX8298yHlCS5TIs";
     // Loading the songs that the user wants to search 
-    var song = load("song_q"); 
+    var song = load("song_q");
     var video_title = [];
     var video_link = [];
     var youtube = "https://www.youtube.com/watch?v=";
@@ -63,21 +63,21 @@ function get_youtube_api() {
         var youtube_full_api = youtube_api + search + youtube_token;
         // Feching one link at a time
         fetch(youtube_full_api)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            var title = data.items[0].snippet.title;
-            var id = youtube + data.items[0].id.videoId;
-            video_title.push(title);
-            video_link.push(id);
-            // Updating the song and song link to the local storage
-            save("song_q", video_title);
-            save("song_a", video_title);
-            save("song_o", video_title);
-            save("video_link", video_link);
-            save("video_link_o", video_link);
-        }); 
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                var title = data.items[0].snippet.title;
+                var id = youtube + data.items[0].id.videoId;
+                video_title.push(title);
+                video_link.push(id);
+                // Updating the song and song link to the local storage
+                save("song_q", video_title);
+                save("song_a", video_title);
+                save("song_o", video_title);
+                save("video_link", video_link);
+                save("video_link_o", video_link);
+            });
     }
     return;
 }
@@ -101,7 +101,7 @@ function save(option, data) {
         localStorage.setItem("video_link", JSON.stringify(data));
     } else if (option === "video_link_o") {
         localStorage.setItem("video_link_o", JSON.stringify(data));
-    } 
+    }
     return;
 }
 
@@ -157,7 +157,7 @@ function highScoreBtnHandler(event) {
     window.location.replace('./pages/score.html')
 }
 
-reload.addEventListener("click", function(event) {
+reload.addEventListener("click", function (event) {
     event.preventDefault();
     location.reload();
 })
