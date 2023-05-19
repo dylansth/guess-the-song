@@ -44,8 +44,8 @@ function get_youtube_api() {
     //         .then(function (data) {
     //             save("video_id", data.items[0].id.videoId);
     //         });
-        var video_id = ["Rmtx9slmodw", "sK89EOD9Klw&ab", "W9F5xHWfmPs", "f1auh7D0NF4", "Yp7etMffYAc", "1RGsQVmkq2U", "lQFIe5STi3M", "s944sDlARUk", "YubPf3N26KY", "x6hWKp95Kp8"];
-        save("video_id", video_id);
+    var video_id = ["Rmtx9slmodw", "sK89EOD9Klw&ab", "W9F5xHWfmPs", "f1auh7D0NF4", "Yp7etMffYAc", "1RGsQVmkq2U", "lQFIe5STi3M", "s944sDlARUk", "YubPf3N26KY", "x6hWKp95Kp8"];
+    save("video_id", video_id);
     // }
     return;
 }
@@ -90,12 +90,12 @@ function save(option, data) {
     } else if (option === "user") {
         localStorage.setItem("user", JSON.stringify(data));
     } else if (option === "score") {
-        localStorage.setItem("score", data);
+        localStorage.setItem("score", JSON.stringify(data));
     } else if (option === "video_id") {
         localStorage.setItem("video_id", JSON.stringify(data));
     } else if (option === "video_link") {
         localStorage.setItem("video_link", JSON.stringify(data));
-    } 
+    }
     return;
 }
 
@@ -109,13 +109,13 @@ function load(option) {
     } else if (option === "user") {
         return JSON.parse(localStorage.getItem("user"));
     } else if (option === "score") {
-        return localStorage.getItem("score");
+        return JSON.parse(localStorage.getItem("score"));
     } else if (option === "video_id") {
         return JSON.parse(localStorage.getItem("video_id"));
     } else if (option === "video_link") {
         return JSON.parse(localStorage.getItem("video_link"));
     }
-    return; 
+    return;
 }
 
 
