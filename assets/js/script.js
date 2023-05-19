@@ -3,9 +3,13 @@
 var playBtn = document.getElementById('play-btn')
 var highScoreBtn = document.getElementById('high-score-btn')
 var userInput = document.getElementById('user-input')
-// Play button event listener No functions for now
-playBtn.addEventListener('click', playBtnHandler)
-highScoreBtn.addEventListener('click', highScoreBtnHandler)
+
+// prevent form loading in other pages
+if ((window.location.href).includes('index.html')) {
+    // console.log((window.location.href).includes('index.html'))
+    playBtn.addEventListener('click', playBtnHandler)
+    highScoreBtn.addEventListener('click', highScoreBtnHandler)
+}
 
 
 var genius_artist = "alanwalker";
