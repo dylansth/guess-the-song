@@ -49,16 +49,14 @@ function get_genius_api() {
 function get_youtube_api() {
     // Basic variables for the youtube_api 
     var youtube_api = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
-    var youtube_token = "&key=AIzaSyBXADMN342Qfcrp6Bg1Td0mYcOYRF4I4WY";
+    var youtube_token = "&key=AIzaSyAxZOloVtGYHMx-MtdonX8298yHlCS5TIs";
     // Loading the songs that the user wants to search 
     var song = load("song_q");
     var video_title = [];
     var video_link = [];
     var youtube = "https://www.youtube.com/watch?v=";
-    console.log(song);
     // A fetch loops that runs 10 times that matches the 10 songs each artist has
-    for (var i = 0; i < 10; i++) {
-        console.log(song[i]);
+    for (var i = 0; i < 10; i ++) {  
         // Replacing the search with the search parameters of the api
         var search = song[i] + " " + genius_artist + " lyrics";
         search = search.replaceAll(" ", "%20")

@@ -53,7 +53,6 @@ function generate_questions() {
     // The option array takes in the correct answer
     options.push(song_q[ran]);
     var answer = song_q[ran];
-    console.log(answer);
     // Removes the question asked so it doesn't repeat
     song_q = song_q.filter(item => item != song_q[ran]);
     // Removes the link so it doesn't repeat
