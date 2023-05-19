@@ -3,7 +3,6 @@
 var listEl = document.getElementById('scoreUl')
 var goHomeBtn = document.getElementById('thePlayagain')
 var clearScoresBtn = document.getElementById('theClearscore')
-var play_again_btn = document.getElementById("thePlay")
 
 console.log(listEl, goHomeBtn)
 // loading page

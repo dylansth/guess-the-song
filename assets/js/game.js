@@ -93,6 +93,7 @@ function scoreSaveHandler(s, sq) {
     scores.push(s)
   }
   save('score', scores)
+  score = 0;
 }
 
 // Picks out the other 3 options
