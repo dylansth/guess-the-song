@@ -15,6 +15,7 @@
     --clicktoListen: rgb(98, 248, 248, 0.57);
     --answerResultcolor: rgba(151, 30, 111, 0.699);
     --highscoreListborder: cyan;
+    --highscoreTextcolor: rgb(50, 226, 245);
     --mainfonts: Verdana, Tahoma, sans-serif;
 }
 
@@ -135,6 +136,14 @@ h2 {
     transition: 500ms;
 }
 
+/* Your current score header */
+h5 {
+    color: var(--white);
+    margin-top: 45px;
+    font-size: 100%;
+    opacity: 75%;
+}
+
 /* Scoreboard Header */
 h3 {
     background-color: var(--seconddarkcolor);
@@ -151,19 +160,20 @@ h3 {
 #thescoreBoard {
     margin: 20px auto;
     width: 33%;
-    opacity: 75%;
+    opacity: 80%;
     border: 5px solid var(--highscoreListborder);
-    color: blueviolet;
 }
 
 /* Scoreboard Header */
 #thescoreBoard thead {
     background-color: var(--accentcolor);
     border: 5px solid var(--highscoreListborder);
+    text-align: center;
 }
 
 #thescoreBoard tbody {
-    color: var(--maincolor);
+    color: var(--highscoreTextcolor);
+    background-color: var(--seconddarkcolor);
 }
 
 /* Play again & Clear Score Buttons with styling*/
