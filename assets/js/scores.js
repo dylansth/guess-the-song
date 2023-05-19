@@ -32,7 +32,23 @@ function play_again_handler() {
 // display the scores page
 function display(users, scores) {
     console.log(users, scores)
+    var objList = []
     for (var i = 0; i < users.length || i < scores.length; i++) {
+        objList.push({
+            id: i,
+            user: users[i],
+            score: scores[i]
+        })
+    }
+    objList.sort(function (a, b) {
+        var keyA = a.id
+        var keyB = b.id
+        if (keyA < keyB) return 1;
+        if (keyA > keyB) return -1;
+        return 0;
+    });
+    console.log(objList)
+    for (var i = 0; i < objList.length; i++) {
         // var liEl = document.createElement('li')
         // liEl.setAttribute('class', "list-group-item")
         // liEl.textContent = users[i] + ": " + scores[i]
@@ -44,9 +60,10 @@ function display(users, scores) {
         // tdIdEl.setAttribute('class', "list-group-item")
         // tdNameEl.setAttribute('class', "list-group-item")
         // tdScoreEl.setAttribute('class', "list-group-item")
+        console.log(objList[i].user)
         tdIdEl.textContent = i
-        tdNameEl.textContent = users[i]
-        tdScoreEl.textContent = scores[i]
+        tdNameEl.textContent = objList[i].user
+        tdScoreEl.textContent = objList[i].score
 
         trEl.append(tdIdEl)
         trEl.append(tdNameEl)

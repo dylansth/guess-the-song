@@ -49,15 +49,15 @@ function get_genius_api() {
 function get_youtube_api() {
     // Basic variables for the youtube_api 
     var youtube_api = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
-    var youtube_token = "&key=AIzaSyALCefgMwpp1cTKw-lYMFfrRJAet8vyOrQ";
+    var youtube_token = "&key=AIzaSyBXADMN342Qfcrp6Bg1Td0mYcOYRF4I4WY";
     // Loading the songs that the user wants to search 
-    var song = load("song_q"); 
+    var song = load("song_q");
     var video_title = [];
     var video_link = [];
     var youtube = "https://www.youtube.com/watch?v=";
     console.log(song);
     // A fetch loops that runs 10 times that matches the 10 songs each artist has
-    for (var i = 0; i < 10; i ++) {  
+    for (var i = 0; i < 10; i++) {
         console.log(song[i]);
         // Replacing the search with the search parameters of the api
         var search = song[i] + " " + genius_artist + " lyrics";
@@ -65,21 +65,21 @@ function get_youtube_api() {
         var youtube_full_api = youtube_api + search + youtube_token;
         // Feching one link at a time
         fetch(youtube_full_api)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            var title = data.items[0].snippet.title;
-            var id = youtube + data.items[0].id.videoId;
-            video_title.push(title);
-            video_link.push(id);
-            // Updating the song and song link to the local storage
-            save("song_q", video_title);
-            save("song_a", video_title);
-            save("song_o", video_title);
-            save("video_link", video_link);
-            save("video_link_o", video_link);
-        }); 
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                var title = data.items[0].snippet.title;
+                var id = youtube + data.items[0].id.videoId;
+                video_title.push(title);
+                video_link.push(id);
+                // Updating the song and song link to the local storage
+                save("song_q", video_title);
+                save("song_a", video_title);
+                save("song_o", video_title);
+                save("video_link", video_link);
+                save("video_link_o", video_link);
+            });
     }
     return;
 }
@@ -103,7 +103,7 @@ function save(option, data) {
         localStorage.setItem("video_link", JSON.stringify(data));
     } else if (option === "video_link_o") {
         localStorage.setItem("video_link_o", JSON.stringify(data));
-    } 
+    }
     return;
 }
 
@@ -159,7 +159,7 @@ function highScoreBtnHandler(event) {
     window.location.replace('./pages/score.html')
 }
 
-reload.addEventListener("click", function(event) {
+reload.addEventListener("click", function (event) {
     event.preventDefault();
     location.reload();
 })
