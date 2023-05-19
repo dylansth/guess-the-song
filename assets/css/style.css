@@ -14,6 +14,7 @@
     --clearscoreBorder: rgb(171, 38, 127);
     --clicktoListen: rgb(98, 248, 248, 0.57);
     --answerResultcolor: rgba(151, 30, 111, 0.699);
+    --highscoreListborder: cyan;
     --mainfonts: Verdana, Tahoma, sans-serif;
 }
 
@@ -45,6 +46,7 @@ h1 {
     font-size: 150%;
     margin-top: 15px;
 }
+
 /* Goodluck styling */
 #goodluckMsg {
     font-size: 66%;
@@ -147,12 +149,21 @@ h3 {
 
 /* Scoreboard List */
 #thescoreBoard {
-    margin-top: 20px;
-    max-width: 33%;
-    /* display: flex; */
-    justify-content: center;
-    line-height: 2px;
-    list-style-type: none;
+    margin: 20px auto;
+    width: 33%;
+    opacity: 75%;
+    border: 5px solid var(--highscoreListborder);
+    color: blueviolet;
+}
+
+/* Scoreboard Header */
+#thescoreBoard thead {
+    background-color: var(--accentcolor);
+    border: 5px solid var(--highscoreListborder);
+}
+
+#thescoreBoard tbody {
+    color: var(--maincolor);
 }
 
 /* Play again & Clear Score Buttons with styling*/
@@ -160,7 +171,7 @@ h3 {
     margin-top: 30px;
 }
 
-#thePlayagain {
+#thePlayagain, #thePlay {
     background-color: var(--playagainFinished);
     border: 3px solid var(--playagainBorder);
     filter: grayscale(50%);
@@ -168,7 +179,7 @@ h3 {
 }
 
 /* Additional Styling */
-#thePlayagain:hover {
+#thePlayagain:hover, #thePlay:hover {
     filter: grayscale(0%);
     opacity: 100%;
     transition: 500ms;
