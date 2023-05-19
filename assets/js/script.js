@@ -49,7 +49,7 @@ function get_genius_api() {
 function get_youtube_api() {
     // Basic variables for the youtube_api 
     var youtube_api = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=";
-    var youtube_token = "&key=AIzaSyAxZOloVtGYHMx-MtdonX8298yHlCS5TIs";
+    var youtube_token = "&key=AIzaSyAFbAljFh9flAoTW8ufjDQERNETaUUkIh8";
     // Loading the songs that the user wants to search 
     var song = load("song_q"); 
     var video_title = [];
