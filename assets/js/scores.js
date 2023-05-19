@@ -33,10 +33,25 @@ function play_again_handler() {
 function display(users, scores) {
     console.log(users, scores)
     for (var i = 0; i < users.length || i < scores.length; i++) {
-        var liEl = document.createElement('li')
-        liEl.setAttribute('class', "list-group-item")
-        liEl.textContent = users[i] + ": " + scores[i]
-        listEl.append(liEl)
+        // var liEl = document.createElement('li')
+        // liEl.setAttribute('class', "list-group-item")
+        // liEl.textContent = users[i] + ": " + scores[i]
+        // listEl.append(liEl)
+        trEl = document.createElement('tr')
+        tdIdEl = document.createElement('td')
+        tdNameEl = document.createElement('td')
+        tdScoreEl = document.createElement('td')
+        // tdIdEl.setAttribute('class', "list-group-item")
+        // tdNameEl.setAttribute('class', "list-group-item")
+        // tdScoreEl.setAttribute('class', "list-group-item")
+        tdIdEl.textContent = i
+        tdNameEl.textContent = users[i]
+        tdScoreEl.textContent = scores[i]
+
+        trEl.append(tdIdEl)
+        trEl.append(tdNameEl)
+        trEl.append(tdScoreEl)
+        listEl.append(trEl)
     }
 }
 // loading page function
