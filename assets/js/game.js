@@ -71,16 +71,28 @@ function generate_questions() {
         buttons[i].setAttribute("data-answer", "incorrect");
       }
     }
+
+
     if (song_q.length === 0) {
-      var score_board = load("score");
-      score_board.push(score);
-      save("score", score_board);
+      scoreSaveHandler(score, song_q.length);
       window.location.replace("./score.html");
     }
     save("song_q", song_q);
     save("video_link", id_img);
     score_track.textContent = "Your current score is: " + score + "⭐";
   }
+}
+
+function scoreSaveHandler(s, sq) {
+  var scores = load('score')
+  console.log(s, sq)
+  if (scores) {
+    scores.push(s)
+  } else {
+    scores = []
+    scores.push(s)
+  }
+  save('score', scores)
 }
 
 // Picks out the other 3 options
